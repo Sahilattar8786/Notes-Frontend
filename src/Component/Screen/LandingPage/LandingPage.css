@@ -1,0 +1,44 @@
+.main{
+    min-height: 93vh;
+    display: flex;
+    align-items: center;
+    background-image: url("../../../Asset/LandingPage.jpg") ; 
+    background-position: center ;
+    background-size: cover;
+}
+.title{
+    font-size:96px;
+    font-weight: 700;
+}
+.subtitle{
+    font-size: 60px;
+    padding-top: 10px;
+}
+.intro-text{
+    width: 100%;
+    text-align: center;
+}
+.buttonContainer{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+@media only screen and (min-width:768px ){
+   .title{
+    font-size: 45px;
+   }
+   .subtitle{
+    font-size: 22px;
+   }
+}
+@media only  screen and (max-width:1280px) {
+    .title{
+        font-size: 40px;
+       }
+       .subtitle{
+        font-size: 15px;
+       }
+       .buttonContainer{
+         padding: 0 200px;
+       }
+}
