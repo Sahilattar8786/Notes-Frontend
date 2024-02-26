@@ -1,10 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers,applyMiddleware } from 'redux'; 
 import {thunk} from 'redux-thunk';
-import { userLoginReducer, userRegisterReducer } from './reducers/userReducer';
+import { userLoginReducer, userRegisterReducer,userUpdateReducer } from './reducers/userReducer';
+import { notesCreateReducer, notesDeleteReducer, notesListReducer, notesUpdateReducer, } from './reducers/notesReducer';
+
 const reducer = combineReducers({
     userLogin:userLoginReducer,
-    userRegister:userRegisterReducer
+    userRegister:userRegisterReducer,
+    noteList:notesListReducer,
+    noteCreate:notesCreateReducer,
+    noteUpdate:notesUpdateReducer,
+    noteDelete:notesDeleteReducer,
+    userUpdate: userUpdateReducer,
+
 });
 
 
@@ -17,6 +25,7 @@ const middleware = [thunk]; // Define your middleware array
 
 const store = configureStore({
   reducer,
+  initialState,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
   devTools: process.env.NODE_ENV !== 'production'
 });

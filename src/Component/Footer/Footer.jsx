@@ -13,7 +13,7 @@ export default function Footer() {
       }}>
         <Container>
            <Row>
-                 <Col className='text-center'>@ <i class="fa fa-copyright" aria-hidden="true">2024</i></Col>
+                 <Col className='text-center'>@ <i className="fa fa-copyright" aria-hidden="true">2024</i></Col>
            </Row>
           </Container>
       </footer>

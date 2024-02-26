@@ -17,7 +17,7 @@ export default function Login() {
     const dispatch=useDispatch();
     const submitHandler = async (e) => {
         e.preventDefault();
-        dispatch(LoginFun(email,password));
+        await dispatch(LoginFun(email,password));
         navigate('/mynotes');
     }
       

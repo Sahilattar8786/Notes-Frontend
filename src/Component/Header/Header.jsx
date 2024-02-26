@@ -12,16 +12,22 @@ export default function Header() {
  const navigate=useNavigate()
  const userLogin=useSelector((state)=>state.userLogin);
  const {userInfo}=userLogin;
+
   const logoutHandler=()=>{
      dispatch(logout());
      navigate("/");
   }
-
+ const gotoProfile=()=>{
+  navigate("/profile");
+ }
+ const gotoMyNotes=()=>{
+  navigate("/mynotes")
+ }
   return (
     <div>
      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/" className="fw-bold text-success">Note Zipper</Navbar.Brand>
+        <Navbar.Brand href="/" className="fw-bold text-success">Smart Notes</Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -37,27 +43,37 @@ export default function Header() {
               </Form>
         
           </Nav>
-          <Nav>
-                <Nav.Link href="/mynotes">My Notes</Nav.Link>
+                <Nav>
+            {userInfo ? (
+              <>
+                <Nav.Link onClick={()=>gotoMyNotes()}>My Notes</Nav.Link>
                 <NavDropdown
-                  title="Sahil"
+                  title={`${userInfo.name}`}
                   id="collasible-nav-dropdown"
                 >
-                  <NavDropdown.Item href="/profile">
-                    {/* <img
+                  <NavDropdown.Item onClick={()=>gotoProfile()} >
+                    <img
                       alt=""
                       src={`${userInfo.pic}`}
                       width="25"
                       height="25"
                       style={{ marginRight: 10 }}
-                    /> */}
+                    />
                     My Profile
                   </NavDropdown.Item>
 
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={logoutHandler}>Log Out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
                 </NavDropdown>
+              </>
+            ) : (
+              <Nav.Link href="/login">Login</Nav.Link>
+            )}
           </Nav>
+       
+            
         </Navbar.Collapse>
       </Container>
     </Navbar>
