@@ -19,7 +19,7 @@ export const listNotes = () => async (dispatch, getState) => {
         },
       };
 
-      const { data } = await axios.get('http://localhost:5000/api/notes', config);
+      const { data } = await axios.get('/api/notes', config);
 
       dispatch({
         type: NOTES_LIST_SUCCESS,
@@ -58,7 +58,7 @@ export const createNote=(title,Content,Category)=>async(dispatch,getState)=>{
           "Content-Type": "application/json",
         },
       };
-      const {data}=await axios.post('http://localhost:5000/api/notes/create',{title,Content,Category},config)
+      const {data}=await axios.post('/api/notes/create',{title,Content,Category},config)
 
       dispatch({
         type:NOTES_CREATE_SUCCESS,
@@ -138,7 +138,7 @@ export const createNote=(title,Content,Category)=>async(dispatch,getState)=>{
           },
 
         }
-        const {data} = await  axios.delete(`http://localhost:5000/api/notes/${id}`,config);
+        const {data} = await  axios.delete(`/api/notes/${id}`,config);
 
         dispatch({
           type:NOTES_DELETE_SUCCESS,

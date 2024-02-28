@@ -11,7 +11,7 @@ export const LoginFun=(email,password)=> async (dispatch)=>{
             },
         };
 
-        const { data } = await axios.post("http://localhost:5000/api/users/login", {
+        const { data } = await axios.post("/api/users/login", {
             email, 
             password
           }, config);
@@ -39,7 +39,7 @@ export const register=(name,email,password,pic)=>async(dispatch)=>{
             "Content-type":"application/json"
         },
        };
-       const {data}=await axios.post("http://localhost:5000/api/users",{name,pic,email,password},config);
+       const {data}=await axios.post("/api/users",{name,pic,email,password},config);
        dispatch({type:USER_REGISTER_SUCCESS, payload:data});
        dispatch({type:USER_LOGIN_SUCCESS,payload:data})
 
@@ -71,7 +71,7 @@ export const updateProfile=(user)=>async(dispatch,getState)=>{
         },
       };
 
-      const {data}=await axios.post("http://localhost:5000/api/users/profile",user,config);
+      const {data}=await axios.post("/api/users/profile",user,config);
 
       dispatch({
             type:USER_UPDATE_SUCCESS,
